@@ -10,6 +10,7 @@ import Footer from './components/Footer';
 import { FilmModal, TripModal } from './components/Modals';
 import Hero from './sections/Hero';
 import Trip from './sections/Trip';
+import MaldivesDetail from './sections/MaldivesDetail';
 import Experiences from './sections/Experiences';
 import Quote from './sections/Quote';
 import Host from './sections/Host';
@@ -49,6 +50,20 @@ export default function App() {
     scrollState.mobile = caps.mobile;
     const stopJourney = initJourneyScroll();
     const stopReveals = setupReveals(caps.reduced);
+
+    // If loaded with /maldives or #maldives in URL, smooth scroll to it after initial mount
+    if (window.location.pathname === '/maldives' || window.location.hash.includes('maldives')) {
+      const timer = window.setTimeout(() => {
+        const el = document.getElementById('maldives-detail');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 300);
+      return () => {
+        clearTimeout(timer);
+        stopReveals();
+        stopJourney();
+      };
+    }
+
     return () => {
       stopReveals();
       stopJourney();
@@ -66,15 +81,24 @@ export default function App() {
         ) : (
           <StaticOcean />
         )}
-        <div aria-hidden="true" className="pointer-events-none fixed inset-0 z-[1] bg-[radial-gradient(120%_90%_at_50%_40%,transparent_55%,rgba(3,18,27,0.45)_100%)]" />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none fixed inset-0 z-[1] bg-[radial-gradient(120%_90%_at_50%_40%,transparent_55%,rgba(2,11,17,0.55)_100%)]"
+        />
 
-        <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[90] focus:rounded-full focus:bg-ivory focus:px-5 focus:py-3 focus:text-navy">
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[90] focus:rounded-full focus:bg-[#dfba73] focus:px-5 focus:py-3 focus:text-[#03121b] focus:font-bold"
+        >
           Skip to content
         </a>
         <Header />
         <main id="main" className="relative z-10">
           <Hero />
+          {/* Section 4: Upcoming Trips */}
           <Trip />
+          {/* Section 5: Premium Maldives Trip Detail Experience */}
+          <MaldivesDetail />
           <Experiences />
           <Quote />
           <Host />

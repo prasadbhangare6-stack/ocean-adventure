@@ -30,6 +30,8 @@ export function UIProvider({ children, reducedMotion }: { children: ReactNode; r
       const aliasMap: Record<string, string> = {
         top: 'home',
         trip: 'featured',
+        maldives: 'maldives-detail',
+        expedition: 'maldives-detail',
       };
       const targetId = aliasMap[id] || id;
       const el = document.getElementById(targetId) || document.getElementById(id);

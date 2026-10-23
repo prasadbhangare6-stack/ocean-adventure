@@ -11,7 +11,7 @@ export default function Gallery() {
 
   const items = useMemo(() => {
     if (filter === 'All') return GALLERY;
-    return GALLERY.filter((g) => g.category === filter || g.tags?.includes(filter));
+    return GALLERY.filter((g) => g.category === filter);
   }, [filter]);
 
   const current = active !== null ? items[active] : undefined;
@@ -49,15 +49,15 @@ export default function Gallery() {
 
   return (
     <section id="gallery" className="section py-24 md:py-32" aria-labelledby="gallery-title">
-      <div className="panel-ivory mx-auto max-w-[1440px] rounded-[32px] px-6 py-14 text-navy md:px-14 md:py-20 shadow-xl">
+      <div className="gold-panel mx-auto max-w-[1440px] rounded-[32px] p-8 md:p-14 lg:p-20 text-ivory shadow-xl border border-[#dfba73]/30">
         {/* Header & Category Filter Tabs */}
         <div data-reveal className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <div>
-            <p className="eyebrow text-cyan">Visual Collection</p>
-            <h2 id="gallery-title" className="display mt-4 text-[clamp(2.8rem,5vw,4.6rem)]">
+            <span className="eyebrow-gold">Visual Collection</span>
+            <h2 id="gallery-title" className="display mt-4 text-[clamp(2.8rem,5vw,4.6rem)] text-ivory font-normal">
               Ocean Gallery
             </h2>
-            <p className="mt-3 font-sans text-[15px] text-navy/70 max-w-xl">
+            <p className="mt-3 font-sans text-[15px] text-ivory/80 max-w-xl">
               Glimpses from past journeys across Maldivian reefs, pelagic highways, coral sanctuaries, and the inspiring community of divers.
             </p>
           </div>
@@ -66,7 +66,7 @@ export default function Gallery() {
           <div
             role="group"
             aria-label="Filter photo gallery categories"
-            className="flex flex-wrap items-center gap-2 rounded-2xl bg-cream/70 p-1.5 border border-navy/10"
+            className="flex flex-wrap items-center gap-2 rounded-2xl bg-[#020b11]/80 p-1.5 border border-[#dfba73]/20"
           >
             {GALLERY_CATEGORIES.map((f) => {
               const on = filter === f;
@@ -79,13 +79,13 @@ export default function Gallery() {
                     setActive(null);
                   }}
                   className={`relative rounded-xl px-4 py-2 font-sans text-[12px] font-bold uppercase tracking-[0.14em] transition-all duration-300 ${
-                    on ? 'text-ivory' : 'text-navy/70 hover:text-navy hover:bg-white/60'
+                    on ? 'text-[#03121b]' : 'text-ivory/70 hover:text-ivory hover:bg-ivory/10'
                   }`}
                 >
                   {on && (
                     <motion.span
                       layoutId="filter-pill"
-                      className="absolute inset-0 rounded-xl bg-navy shadow-sm"
+                      className="absolute inset-0 rounded-xl bg-[#dfba73] shadow-sm"
                       transition={{ type: 'spring', stiffness: 400, damping: 35 }}
                     />
                   )}
@@ -112,7 +112,7 @@ export default function Gallery() {
                 <button
                   onClick={(e) => open(i, e.currentTarget)}
                   aria-label={`Open photo: ${g.caption}`}
-                  className="group relative block w-full h-full overflow-hidden rounded-[22px] bg-cream text-left shadow-sm hover:shadow-lg transition-shadow"
+                  className="group relative block w-full h-full overflow-hidden rounded-[22px] border border-[#dfba73]/20 bg-[#020b11] text-left shadow-sm hover:border-[#dfba73]/60 hover:shadow-lg transition-all"
                 >
                   <img
                     src={g.src}
@@ -122,10 +122,10 @@ export default function Gallery() {
                       i === 0 ? 'h-full min-h-[300px] md:aspect-[3/4]' : 'aspect-[4/3] md:aspect-[4/3.2]'
                     }`}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy/85 via-navy/20 to-transparent opacity-85 transition-opacity group-hover:opacity-95" />
-                  
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#020b11]/90 via-[#03121b]/20 to-transparent opacity-85 transition-opacity group-hover:opacity-95" />
+
                   <div className="absolute inset-x-0 bottom-0 p-4 md:p-5">
-                    <span className="inline-block rounded-full bg-seaglass/25 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-seaglass backdrop-blur-xs mb-1.5">
+                    <span className="inline-block rounded-full bg-[#dfba73]/20 border border-[#dfba73]/30 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[#dfba73] backdrop-blur-xs mb-1.5">
                       {g.category}
                     </span>
                     <p className="font-serif text-[17px] md:text-[20px] font-medium leading-snug text-ivory">
@@ -147,7 +147,7 @@ export default function Gallery() {
             role="dialog"
             aria-modal="true"
             aria-label={`${current.caption} viewer`}
-            className="fixed inset-0 z-[80] flex items-center justify-center bg-navy/94 p-4 backdrop-blur-md"
+            className="fixed inset-0 z-[80] flex items-center justify-center bg-[#020b11]/95 p-4 backdrop-blur-md"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -201,11 +201,11 @@ export default function Gallery() {
                 <img
                   src={current.src}
                   alt={current.alt}
-                  className="max-h-[75svh] w-auto max-w-full rounded-[20px] object-contain shadow-2xl"
+                  className="max-h-[75svh] w-auto max-w-full rounded-[20px] object-contain shadow-2xl border border-[#dfba73]/30"
                 />
                 <figcaption className="mt-4 text-center">
                   <div className="font-serif text-2xl text-ivory">{current.caption}</div>
-                  <div className="mt-1 font-sans text-[12px] uppercase tracking-[0.2em] text-seaglass">
+                  <div className="mt-1 font-sans text-[12px] uppercase tracking-[0.2em] text-[#dfba73]">
                     {current.category} <span className="mx-2 text-ivory/40">•</span> Photo {(active ?? 0) + 1} of {items.length}
                   </div>
                 </figcaption>

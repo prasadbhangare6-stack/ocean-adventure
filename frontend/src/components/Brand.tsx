@@ -13,7 +13,7 @@ export function InstagramIcon(props: SVGProps<SVGSVGElement>) {
 
 /**
  * Animated wave brand mark: An evocative circular emblem featuring dual flowing waves
- * and glistening sun ray animation that gently undulates to symbolize ocean tides.
+ * and glistening golden sun ray animation that gently undulates to symbolize ocean tides.
  */
 export function LogoMark({ className = 'h-10 w-10' }: { className?: string }) {
   return (
@@ -22,17 +22,17 @@ export function LogoMark({ className = 'h-10 w-10' }: { className?: string }) {
         <defs>
           <linearGradient id="waveGrad" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stopColor="#0B4B6F" />
-            <stop offset="100%" stopColor="#031E2E" />
+            <stop offset="100%" stopColor="#020B11" />
           </linearGradient>
           <linearGradient id="crestGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#8EDCEB" />
-            <stop offset="50%" stopColor="#A8F0FF" />
-            <stop offset="100%" stopColor="#48C7E8" />
+            <stop offset="0%" stopColor="#dfba73" />
+            <stop offset="50%" stopColor="#edd39b" />
+            <stop offset="100%" stopColor="#c59b4c" />
           </linearGradient>
         </defs>
 
-        {/* Outer badge circle with subtle ocean pulse */}
-        <circle cx="22" cy="22" r="20" fill="url(#waveGrad)" stroke="#8EDCEB" strokeWidth="1" strokeOpacity="0.35" />
+        {/* Outer badge circle with subtle gold ring */}
+        <circle cx="22" cy="22" r="20" fill="url(#waveGrad)" stroke="#dfba73" strokeWidth="1" strokeOpacity="0.45" />
 
         {/* Animated wave 1 (primary crest) */}
         <g className="animate-wave-flow">
@@ -57,7 +57,7 @@ export function LogoMark({ className = 'h-10 w-10' }: { className?: string }) {
         </g>
 
         {/* Golden sun / Pearl dot */}
-        <circle cx="22" cy="14" r="2.6" fill="#F8F4EC" className="animate-pulse" style={{ animationDuration: '3s' }} />
+        <circle cx="22" cy="14" r="2.6" fill="#dfba73" className="animate-pulse" style={{ animationDuration: '3s' }} />
       </svg>
     </div>
   );
@@ -68,11 +68,11 @@ export function Wordmark({ dark = false }: { dark?: boolean }) {
     <div className="flex items-center gap-3.5 group">
       <LogoMark className="h-10 w-10 transition-transform duration-500 group-hover:scale-105" />
       <div className="leading-tight">
-        <div className={`font-serif text-[18px] md:text-[20px] font-bold tracking-[0.04em] uppercase transition-colors ${dark ? 'text-ivory' : 'text-navy group-hover:text-ocean'}`}>
+        <div className={`font-serif text-[18px] md:text-[20px] font-bold tracking-[0.04em] uppercase transition-colors ${dark ? 'text-ivory group-hover:text-[#dfba73]' : 'text-navy group-hover:text-[#dfba73]'}`}>
           PURVA OCEAN ADVENTURES
         </div>
         <div className={`font-sans text-[9px] font-medium tracking-[0.24em] uppercase ${dark ? 'text-ivory/65' : 'text-navy/60'}`}>
-          Expeditions & Mindful Diving
+          Expeditions &amp; Mindful Diving
         </div>
       </div>
     </div>

@@ -4,9 +4,13 @@
   --color-ivory: #f5f0e7;
   --color-cream: #f0e9de;
   --color-navy: #03121b;
+  --color-navy-dark: #020b11;
   --color-ocean: #063c59;
   --color-cyan: #28a8d9;
   --color-seaglass: #8edceb;
+  --color-gold: #dfba73;
+  --color-gold-light: #f5e4bd;
+  --color-gold-dark: #b88d44;
 
   --font-serif: 'Cormorant Garamond', 'Iowan Old Style', Georgia, serif;
   --font-sans: 'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
@@ -33,11 +37,11 @@
     text-rendering: optimizeLegibility;
   }
   ::selection {
-    background: var(--color-seaglass);
+    background: var(--color-gold);
     color: var(--color-navy);
   }
   :focus-visible {
-    outline: 2px solid var(--color-cyan);
+    outline: 2px solid var(--color-gold);
     outline-offset: 3px;
   }
   button,
@@ -50,11 +54,20 @@
   .eyebrow {
     @apply font-sans text-[11px] font-semibold uppercase tracking-[0.28em];
   }
+  .eyebrow-gold {
+    @apply font-sans text-[11px] font-semibold uppercase tracking-[0.28em] text-[#dfba73];
+  }
   .display {
     font-family: var(--font-serif);
     font-weight: 500;
     letter-spacing: -0.01em;
     line-height: 0.98;
+  }
+  .btn-gold {
+    @apply inline-flex items-center justify-center gap-2.5 rounded-full bg-[#dfba73] px-6 py-3.5 text-[12px] font-bold uppercase tracking-[0.18em] text-[#03121b] shadow-[0_10px_25px_-5px_rgba(223,186,115,0.35)] transition-all duration-300 ease-editorial hover:-translate-y-0.5 hover:bg-[#edd39b] hover:shadow-[0_15px_30px_-5px_rgba(223,186,115,0.5)];
+  }
+  .btn-gold-outline {
+    @apply inline-flex items-center justify-center gap-2.5 rounded-full border border-[#dfba73]/60 bg-[#dfba73]/5 px-6 py-3.5 text-[12px] font-semibold uppercase tracking-[0.18em] text-[#dfba73] backdrop-blur-[4px] transition-all duration-300 ease-editorial hover:border-[#dfba73] hover:bg-[#dfba73]/15 hover:text-[#f5e4bd];
   }
   .btn-ivory {
     @apply inline-flex items-center justify-center gap-2 rounded-full bg-ivory px-6 py-3.5 text-[12px] font-semibold uppercase tracking-[0.18em] text-navy transition-all duration-300 ease-editorial hover:-translate-y-0.5 hover:bg-white hover:shadow-[0_12px_30px_-10px_rgba(142,220,235,0.6)];
@@ -75,9 +88,15 @@
     @apply relative scroll-mt-20 px-6 md:px-12 lg:px-20;
   }
   .glass-dark {
-    background: rgba(3, 18, 27, 0.62);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
+    background: rgba(3, 18, 27, 0.72);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  .gold-panel {
+    border: 1px solid rgba(223, 186, 115, 0.22);
+    background: radial-gradient(120% 120% at 50% 0%, rgba(223, 186, 115, 0.06) 0%, rgba(3, 18, 27, 0.65) 100%);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
   }
 
   .animate-wave-flow {
